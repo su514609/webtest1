@@ -5,6 +5,7 @@ import viteCompression from 'vite-plugin-compression'
 import { fileURLToPath, URL } from 'node:url'
 
 export default defineConfig({
+  base: process.env.NODE_ENV === 'production' ? '/webtest1/' : '/',
   plugins: [
     vue(),
     tailwindcss(),
