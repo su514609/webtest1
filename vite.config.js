@@ -4,8 +4,9 @@ import tailwindcss from '@tailwindcss/vite'
 import viteCompression from 'vite-plugin-compression'
 import { fileURLToPath, URL } from 'node:url'
 
-export default defineConfig({
-  base: process.env.NODE_ENV === 'production' ? '/webtest1/' : '/',
+export default defineConfig(({ command }) => ({
+  // GitHub Pages 项目页地址为 /<repo>/，构建时必须带上子路径前缀，否则资源 404 白屏
+  base: command === 'build' ? '/webtest1/' : '/',
   plugins: [
     vue(),
     tailwindcss(),
@@ -34,4 +35,4 @@ export default defineConfig({
       }
     }
   }
-})
+}))
